@@ -35,3 +35,7 @@
 13 select day(hiredate) from emp where ename='KING';
 14 select month(hiredate) from emp where ename='martin';
 15 SELECT CUrdate() - hiredate from emp where ename = "ADAMS";
+16 select curdate(),adddate(curdate(),interval 15 day) '15 Days later';
+17 select * from emp where month(hiredate)=12;
+18 select * from emp where year(hiredate)>1980;
+19 
