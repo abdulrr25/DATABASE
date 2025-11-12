@@ -18,9 +18,9 @@
 
 
 
-
-
                                                           2ND
+
+
 
 1  select ename, job, where HIREDATE between '1981-08-01' AND '1981-05-01' from emp;
 2  select ename,hiredate from emp where year(hiredate)=1982;
@@ -38,4 +38,33 @@
 16 select curdate(),adddate(curdate(),interval 15 day) '15 Days later';
 17 select * from emp where month(hiredate)=12;
 18 select * from emp where year(hiredate)>1980;
-19 
+19 select concat(ename,"-",job) from emp;
+20 SELECT DISTINCT LENGTH(ENAME) AS NAME_LENGTH FROM EMP;
+21 select ename , DATE_FORMAT(hiredate ,'%d/%M/%Y') as HireDate from emp where deptno =20;
+22 SELECT ENAME,DATE_FORMAT(HIREDATE, 'DAY') AS DAY_OF_WEEK FROM EMP WHERE ENAME = 'SMITH';
+23 SELECT ENAME,CONCAT('The ', DATE_FORMAT(HIREDATE, '%D'), ' of ',DATE_FORMAT(HIREDATE, '%b. %Y')) AS HIREDATE FROM EMP         WHERE JOB = 'ANALYST';
+24 SELECT DEPTNO,SUM(SAL*12 + IFNULL(COMM, 1000*12)) AS TOTAL_COMPENSATION FROM EMP GROUP BY DEPTNO;
+25 SELECT ENAME,CASE EMPNO WHEN 7788 THEN 'CLARK' WHEN 7698 THEN 'BLAKE' WHEN 7566 THEN 'JONES' ELSE 'KING' END AS    MANAGER    FROM EMP;
+
+
+
+							3rd
+
+
+
+1.  select ename from emp where job = 'manager';
+2.  select ename from emp where sal>=3000;
+3.  select ename from emp where ename like "_A%";
+4.  select ename , empno ,hiredate,job from emp where deptno = 10;
+5.  select ename , empno ,hiredate,job from emp where sal>=2000;
+6.  select ename , empno ,hiredate,job from emp where deptno in(10,20) and ename like "A%B";
+7.  select * from emp where hiredate="1990-12-21";
+8.  select empno,ename,job,sal from emp where deptno =10;
+9.  select * from emp where (sal*12)>25000 order by sal;
+10. select ename from emp where ename like "%F%";
+11. select empno,ename,job,sal from emp where deptno =10;
+12. select * from emp where (sal*12)>25000 order by sal;
+13. select ename from emp where ename like "%F%";
+14. select deptno,dname from dept order by dname;
+15. select ename , empno,job,sal from emp where sal between 1000 and 2000 ;
+16. 
