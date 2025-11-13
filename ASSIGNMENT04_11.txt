@@ -67,4 +67,30 @@
 13. select ename from emp where ename like "%F%";
 14. select deptno,dname from dept order by dname;
 15. select ename , empno,job,sal from emp where sal between 1000 and 2000 ;
-16. 
+16. select ename, sal*12*1.1 from emp;
+17. select ename, job, deptno from emp where deptno=30 or deptno=40;
+18. select empno, ename from emp where sal>1500 and (job='clerks' or job='manager') ;
+19. select ename,sal*12, comm 'Commission Earned' from emp where sal>comm order by sal,ename;
+20. select ename from emp where ename like "%_s"and  (job ='salesman' or job='managers');
+21. select ename from emp where sal>1000 and sal<2200;
+22. select ename, sal from emp where job ="clerk";
+23. select deptno,ename from emp where sal<2500;
+24. select empno,ename from emp where job='president';
+25. select ename from emp where job='clerk' or job='analyst' or job='salesman';
+26. select ename from emp where ename like 'b%' or ename like 'M%';
+27. select * from emp order by ename;
+28. select  * from emp where comm > 0.05*sal;
+29. select ename, deptno from emp where empno=7566;
+30. select ename name,sal 'monthly salary', deptno from emp where sal>1500 and (deptno=10 or deptno=30);
+31. select ename,sal, comm from emp where comm is not null;
+32. select ename from emp where ename like "__A%";
+33. SELECT ename FROM emp WHERE (ename LIKE '%LS%LS%' AND deptno = 30)OR mgr = 7782;
+34. select ename,job,sal from emp where ((job='Clerk' or job ='Analyst') and sal in(1000,3000,5000));
+35. select ename , sal , comm from emp where (comm> 0.1*sal);
+36. select empno ,ename ,(sal*12+comm+0.1*sal) 'Gross Sal' from emp where deptno in(20,30) order by empno;
+37. select empno ,ename , sal ,(sal*1.15)'New Salary' from emp;
+38. select concat(ucase(left(ename,1)), Lcase(substr(ename,2)))'CamelCase' from emp where ename like 'A%' or ename like 'M%';
+39. select ename,ifnull(comm,'No Commission') from emp ;
+40. 
+
+
