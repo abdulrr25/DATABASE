@@ -109,11 +109,25 @@ C. select UPPER(name),repid,rpad(concat('$', FLOOR(CreditLimit * 1.25)),10,0) AS
 
                                                                   4TH
 
-1. select count(*) from emp;
+1.  select count(*) from emp;
 2.  select max(sal), min(sal) from emp;
-3. select count(*) from emp where sal>3000;
-4.select job,count(*) over(partition by job) from emp;
-5. select * from emp where sal in(select max(sal) from emp) or sal in(select min(sal) from emp);
-6. select job, sum(sal) over(partition by job) from emp;
-7. select job, max(sal) over(partition by job) from emp;
-8. select job, avg(sal) over(partition by job) from emp;
+3.  select count(*) from emp where sal>3000;
+4.  select job,count(*) over(partition by job) from emp;
+5.  select * from emp where sal in(select max(sal) from emp) or sal in(select min(sal) from emp);
+6.  select job, sum(sal) over(partition by job) from emp;
+7.  select job, max(sal) over(partition by job) from emp;
+8.  select job, avg(sal) over(partition by job) from emp;
+9.  select count(*) from emp where DEPTNO =20;
+10. select count(*) from emp where DEPTNO =10 and job="manager" ;
+11. select count(*) from emp where DEPTNO =20 and comm is null ;
+12. 
+13. select * from emp where sal<(select avg(sal) from emp where job='manager');
+14. select avg(sal) over(partition by deptno) from emp;
+15. select count(*) from emp where deptno =30 and comm is not null ;
+16.  select avg(sal),min(sal),max(sal) from emp where job="clerk" or job="manager";
+17. select deptno from emp where job="CLERK" group by (deptno) having count(*)>1;
+18. select ename,hiredate from emp1 where month(hiredate)=12;
+19. select ename,hiredate from emp1 where year(hiredate)=1980;
+20. select concat(concat(ucase(left(ename,1)), Lcase(substr(ename,2))),"-", concat(ucase(left(job,1)), Lcase(substr(job,2)))) "Name-Job" from emp;
+21. SELECT EMPNO ENAME, DATE_FORMAT(HIREDATE, '%d/%m/%y') AS formatted_hiredate FROM EMP WHERE DEPTNO = 20;
+22. 
