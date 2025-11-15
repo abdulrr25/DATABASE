@@ -91,6 +91,29 @@
 37. select empno ,ename , sal ,(sal*1.15)'New Salary' from emp;
 38. select concat(ucase(left(ename,1)), Lcase(substr(ename,2)))'CamelCase' from emp where ename like 'A%' or ename like 'M%';
 39. select ename,ifnull(comm,'No Commission') from emp ;
-40. 
+40. select custname,amount,(0.08*amount) 'Profit Earned' from sales;
+41. select count(*) from sales where prodname='SP TENNIS RACKET' ;
+42.A select name,repid,concat('$', FLOOR(CreditLimit * 1.25)) AS "New Credit Limit" from customer;
+B. select name,repid,rpad(concat('$', FLOOR(CreditLimit * 1.25)),10,0) AS "New Credit Limit" from customer;
+C. select UPPER(name),repid,rpad(concat('$', FLOOR(CreditLimit * 1.25)),10,0) AS "New Credit Limit" from customer;
+43. ELECT ENAME, CASE WHEN DEPTNO=10 THEN 'BELOGS TO DEPT 10 ' WHEN DEPTNO=20 THEN "BELONGS TO DEPT 20" ELSE "Neither 10 nor 20" end from emp;
+44. SELECT CONCAT((LEFT(ENAME,1))," ",ENAME) "ABREVATED NAMES", case when comm is null then (sal*12+600) else ((sal+comm)*12)end FROM EMP;
+45. select ordid,sum(total) over(),(case when commplan='A' then "Anonymous" when commplan='B' then "Buisness" when commplan="C" then "Casual" else "Commission Not Allowed" end) "Commission plan"  from ord
+48.  select * from emp where job='salesman';
+49.  select ename from emp order by ename; 
+50. select * from emp order by sal desc;
+51.  select * from emp order by hiredate;
+52. select job,deptno,ename from emp where ename like"B%" or ename like "M%";
+53. select * from emp where comm is null and sal<3000;
 
 
+                                                                  4TH
+
+1. select count(*) from emp;
+2.  select max(sal), min(sal) from emp;
+3. select count(*) from emp where sal>3000;
+4.select job,count(*) over(partition by job) from emp;
+5. select * from emp where sal in(select max(sal) from emp) or sal in(select min(sal) from emp);
+6. select job, sum(sal) over(partition by job) from emp;
+7. select job, max(sal) over(partition by job) from emp;
+8. select job, avg(sal) over(partition by job) from emp;
