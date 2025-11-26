@@ -164,3 +164,20 @@ C. select UPPER(name),repid,rpad(concat('$', FLOOR(CreditLimit * 1.25)),10,0) AS
 53. SELECT d.*, COUNT(e.empno) AS emp_count FROM dept d LEFT JOIN emp e ON d.deptno=e.deptno GROUP BY d.deptno,d.dname,d.loc;
 54. SELECT d.deptno,d.dname FROM dept d WHERE d.deptno NOT IN (SELECT DISTINCT deptno FROM emp);
 55. SELECT TO_CHAR(hiredate,'Month') AS month, COUNT(*) FROM emp GROUP BY TO_CHAR(hiredate,'Month') ORDER BY COUNT(*);
+
+
+
+						5TH
+
+1  SELECT s.name AS Salesperson, c.name AS Customer, o.amount AS SalesAmount FROM salesperson s JOIN orders o ON s.id=o.salesperson_id JOIN customer c ON o.customer_id=c.id;
+2  SELECT e.name AS Employee, m.name AS Manager FROM emp e JOIN emp m ON e.manager_id=m.id;
+3  SELECT d.dept_id, d.dept_name, e.name FROM dept d JOIN emp e ON d.dept_id=e.dept_id;
+4  SELECT c.name, o.order_no, o.ship_date FROM customer c JOIN orders o ON c.id=o.customer_id WHERE YEAR(o.ship_date)=1987;
+5  SELECT s.name AS Salesman, c.name AS Customer FROM salesperson s JOIN customer c ON s.id=c.salesperson_id;
+6  SELECT s.name AS Salesman, c.name AS Customer FROM salesperson s JOIN customer c ON s.id=c.salesperson_id WHERE s.commission IS NULL OR s.commission=0;
+7  SELECT s.name, s.salary, s.commission, g.grade FROM salesperson s JOIN salgrade g ON s.salary BETWEEN g.losal AND g.hisal;
+8  SELECT p.name, p.standard_price, p.min_price FROM product p WHERE p.name LIKE '%Tennis%';
+9  SELECT DISTINCT p.name FROM orders o JOIN orderdetails od ON o.id=od.order_id JOIN product p ON od.product_id=p.id WHERE o.customer_id IN (100,103);
+10  SELECT d.dept_name, e.salary FROM emp e JOIN dept d ON e.dept_id=d.dept_id WHERE (e.salary,e.commission) IN (SELECT e2.salary,e2.commission FROM emp e2 JOIN dept d2 ON e2.dept_id=d2.dept_id WHERE d2.dept_name='DALLAS');
+11  SELECT DISTINCT e.job FROM emp e JOIN dept d ON e.dept_id=d.dept_id WHERE d.dept_name='RESEARCH' AND e.job IN (SELECT e2.job FROM emp e2 JOIN dept d2 ON e2.dept_id=d2.dept_id WHERE d2.dept_name='ACCOUNTING') ORDER BY e.job ASC;
+
