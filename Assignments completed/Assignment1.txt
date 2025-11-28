@@ -1,0 +1,16 @@
+1,Retrieve all columns and all rows from the EMP table.,SELECT * FROM EMP;
+2,Retrieve only the employee names (ENAME) from the EMP table.,SELECT ENAME FROM EMP;
+3,Retrieve the employee names (ENAME) and their job titles (JOB) from the EMP table.,"SELECT ENAME, JOB FROM EMP;"
+4,Retrieve the department names (DNAME) from the DEPT table.,SELECT DNAME FROM DEPT;
+5,Retrieve all columns and all rows from the EMP table (case example).,SELECT * FROM EMP;
+6,Retrieve all columns and all rows from the DEPT table.,SELECT * FROM DEPT;
+7,"Retrieve employee number, employee name (aliased as 'Employee Name'), and salary from EMP.","SELECT EMPNO, ENAME AS 'Employee Name', SAL FROM EMP;"
+8,"Retrieve job title (aliased as 'Profile'), commission (aliased as 'Bonus'), and employee name (aliased as 'EmployeeName') from EMP.","SELECT JOB AS 'Profile', COMM AS 'Bonus', ENAME AS 'EmployeeName' FROM EMP;"
+9,"Retrieve location (aliased as ""Location"") and department names (aliased as ""Department Names"") from DEPT.","SELECT LOC AS ""Location"", DNAME AS ""Department Names"" FROM DEPT;"
+10,Retrieve the manager ID (MGR) for all employees whose job is 'Manager'.,SELECT MGR FROM EMP WHERE JOB ='Manager';
+11,"Concatenate EMPNO, ENAME, and MGR into a single column aliased as ""Concatination"".","SELECT CONCAT(EMPNO, ENAME, MGR) AS ""Concatination"" FROM EMP;"
+12,"Create a JSON object for each employee with keys 'empno', 'Employeename', and 'Managaer'.","SELECT JSON_OBJECT('empno', EMPNO, 'Employeename', ENAME, 'Managaer', MGR) AS emp_json FROM EMP;"
+13,"Calculate the total compensation (SAL + COMM), substituting SAL if COMM is null (using IFNULL).","SELECT IFNULL(SAL + COMM, SAL) FROM EMP;"
+14,Create a formatted string output indicating the employee's current and desired (3x) salary.,"SELECT CONCAT(ENAME, ' earns ', SAL, "" monthly but wants salary "", 3 * SAL) AS Salaries FROM EMP;"
+15,Retrieve all distinct job titles (JOB) from the EMP table.,SELECT JOB FROM EMP;
+16,Retrieve data from the SALES table with column aliases for clarity.,"SELECT REPID AS 'repid', CUSTID AS 'custid', CUSTNAME AS 'custname', PRODID AS 'prodid', PRODNAME AS 'prosname', AMOUNT AS 'amount' FROM SALES;"
