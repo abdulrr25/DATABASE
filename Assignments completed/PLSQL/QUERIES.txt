@@ -1,0 +1,70 @@
+/* 1. Show all customers — even those who never placed an order */
+SELECT c.CUSTID, c.NAME, c.ADDRESS, c.CITY, c.STATE, c.ZIP, c.AREA, c.PHONE,
+       o.ONUM, o.AMT, o.ODATE
+FROM customer c
+LEFT JOIN orders o ON c.CUSTID = o.CNUM;
+
+------------------------------------------------------------
+
+/* 2. List all employees, including those not yet assigned to any department */
+SELECT e.EMPNO, e.ENAME, e.JOB, e.DEPTNO, d.DNAME, d.LOC
+FROM emp e
+LEFT JOIN dept d ON e.DEPTNO = d.DEPTNO;
+
+------------------------------------------------------------
+
+/* 3. List all products — even those that never sold */
+SELECT p.PRODID, p.DESCRIP, p.PRICE, s.num_sales
+FROM product p
+LEFT JOIN product_sales s ON p.DESCRIP = s.product_name;
+
+------------------------------------------------------------
+
+/* 4. Show all teachers, including those who haven’t been assigned a subject yet */
+SELECT t.emp_id, t.name, cs.subjects
+FROM trainers t
+LEFT JOIN classandsubjects cs ON t.emp_id = cs.class;
+
+------------------------------------------------------------
+
+/* 5. Display all vehicles — even those never sent for maintenance */
+SELECT l.ID, l.customerID, l.licenceNumber, l.licenceClass, l.licenceType,
+       s.name AS service_name
+FROM licence l
+LEFT JOIN service s ON l.ID = s.sid;
+
+------------------------------------------------------------
+
+/* 6. Show all hostel students, even if they missed all meals */
+SELECT s.studentID, s.name, r.roomNumber, f.NAME AS food_item
+FROM student s
+LEFT JOIN room_assigned r ON s.studentID = r.studentID
+LEFT JOIN menucard f ON s.studentID = f.ID;
+
+------------------------------------------------------------
+
+/* 7. Display all products with or without customer reviews */
+SELECT p.ProductID, p.ProductName, c.comment, c.commentDate
+FROM products p
+LEFT JOIN comments c ON p.ProductID = c.ID;
+
+------------------------------------------------------------
+
+/* 8. List all patients — even those without appointments */
+SELECT p.patientID, p.patientName, p.age, p.gender, d.visitDate
+FROM patient p
+LEFT JOIN doctorvisits d ON p.patientID = d.patientID;
+
+------------------------------------------------------------
+
+/* 9. Show all bank accounts — even those with no transactions */
+SELECT b.accountNumber, b.bankName, b.riskStatus, t.transactionDate, t.amount
+FROM bankloan b
+LEFT JOIN transactions t ON b.accountNumber = t.custId;
+
+------------------------------------------------------------
+
+/* 10. Show all students, even those not receiving scholarships */
+SELECT s.studentID, s.name, b.RATE AS scholarship_rate
+FROM student s
+LEFT JOIN bonus b ON s.studentID = b.ID;
